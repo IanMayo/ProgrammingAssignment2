@@ -45,14 +45,14 @@ cacheSolve <- function(x, ...) {
     m <- x$getinverse()
     
     ## was the inverse stored?
-    if(!is.null(m)) {
+    if(!is.null(m)) 
+    {
         ## yes - just return it
         return(m)
     }
     else
     {
         ## no, we'd better create it then
-        
         ## retrieve the matrix
         data <- x$get()
         
@@ -64,7 +64,19 @@ cacheSolve <- function(x, ...) {
         
         ## return the inverse
         return(m)
-    }
-    
-    
+    } 
 }
+
+## DEMO
+## > mat1=matrix(c(4,3,3,2),nrow=2)
+## > cm <- makeCacheMatrix(mat1)
+## > cm$getinverse()
+## NULL
+## > cacheSolve(cm)
+## [,1] [,2]
+## [1,]   -2    3
+## [2,]    3   -4
+## > cm$getinverse()
+## [,1] [,2]
+## [1,]   -2    3
+## [2,]    3   -4
